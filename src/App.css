@@ -1,9 +1,9 @@
 body {
 
-    background-color: rgb(0, 153, 163);
+    background-color: aqua;
     display: flex;
     flex-direction: column;
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -12,20 +12,13 @@ body {
 
 h1 {
 
-    color: white;
-    font-size: 5 rem;
-
-}
-
-.list-of-tasks-todo {
-
-    padding-top: 10px;
-    width: 400px;
+    text-align: center;
 
 }
 
 
-.task-name {
+
+.task-pointer {
 
     cursor: pointer;
 
@@ -37,20 +30,42 @@ h1 {
 
 }
 
+
 button {
 
-    border: 0;
-    cursor: pointer;
-    font-size: 18px;
-    outline: 0;
-
+  border: 0;
+  cursor: pointer;
+  font-size: 18px;
+  outline: 0;
 
 }
 
-.task-status button {
+.container {
 
-    color: grey
+    padding-top: 10px;
+    width: 400px;
+
 }
+
+.tasks {
+
+    background: white;
+    padding: 3px 10px;
+    font-size: 1.0rem;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.tasks button {
+
+    color: grey;
+
+}
+
+
 
 
 input {
@@ -65,18 +80,18 @@ input {
 
 }
 
-
 form {
 
     display: flex;
     padding-top: 10px;
 
+
 }
 
 form button {
 
-    color: black;
-    background: white;
+    display: flex;
+    background: rgb(255, 255, 255);
     outline: 0;
     padding: 0 15px;
 

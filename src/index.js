@@ -1,43 +1,50 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import './App.css'
+import './App.css';
+
 
 const AddTask = ({ addTask }) => {
 
-    const [value, updateValue] = useState("");
+    const [value, addValue] = useState("");
 
-    const handleSumbit = e => {
-
+    const handleSubmit = e => {
 
         e.preventDefault();
 
         if (value !== "") {
 
             addTask(value);
-            updateValue("");
+            addValue("");
+
 
         }
+
 
     }
 
     return (
 
-        <form onSubmit={handleSumbit}>
-            <input
 
+
+
+        <form onSubmit={handleSubmit} class="taskForm">
+
+            <input
                 type="text"
                 value={value}
-                placeholder="Enter your task to do"
-                onChange={e => updateValue(e.target.value)}
-            >
+                placeholder="Enter you list to do"
+                onChange={e => addValue(e.target.value)}
+            ></input>
 
-            </input>
-
-            <button type="submit"><i class="material-icons">add</i></button>
+            <button type="submit"><span className='material-icons'>add</span></button>
 
         </form>
 
+
+
     );
+
+
 
 };
 
@@ -45,10 +52,15 @@ const AddTask = ({ addTask }) => {
 const TodoList = () => {
 
     const addTask = text => updateTask([...tasks, { text }]);
-    const [tasks, updateTask] = useState([])
 
+    const [tasks, updateTask] = useState([
 
-    const toggleTask = (index) => {
+        { text: "Learn React Js", isCompleted: false },
+        { text: "Learn Node Js", isCompleted: false }
+
+    ]);
+
+    const toggleUpdate = (index) => {
 
         const newTask = [...tasks];
 
@@ -62,13 +74,14 @@ const TodoList = () => {
             newTask[index].isCompleted = true;
 
         }
+
         updateTask(newTask);
 
     }
 
     const removeTask = (index) => {
 
-        const newTask = [...tasks];
+        const newTask = [...tasks]
 
         newTask.splice(index, 1);
 
@@ -79,31 +92,35 @@ const TodoList = () => {
 
     return (
 
-
-        <div className="list-of-tasks-todo" >
+        <div class="container">
 
             {tasks.map((task, index) => (
 
-                <div className='task-status'>
+                <div className="tasks">
 
-                    <span onClick={() => toggleTask(index)} className={task.isCompleted ? "completed-task task-name" : "task-name"}>
+                    <span onClick={() => toggleUpdate(index)} className={task.isCompleted ? "task-pointer completed-task" : "task-pointer"}>
 
                         {index}
                         {task.text}
 
                     </span>
 
-                    <button><i class='material-icons' onClick={() => removeTask(index)}>delete</i></button>
+                    <button onClick={() => removeTask(index)}><span className='material-icons'>delete</span></button>
 
                 </div>
+
+
 
             ))}
 
             <AddTask addTask={addTask} />
+
         </div>
+
 
     );
 
 }
 
-ReactDOM.render(< TodoList />, document.getElementById('root'));
+ReactDOM.render(<TodoList />, document.getElementById('root'));
+
